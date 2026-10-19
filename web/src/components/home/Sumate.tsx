@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { MiradaIsotipo } from "@/components/brand/MiradaIsotipo";
+import { Logo } from "@/components/brand/Logo";
 import { Prototipo } from "@/components/ui/Prototipo";
 
 const LADOS = ["Tomo café", "Hago café", "Tengo un lugar", "Un poco de todo"];
@@ -41,7 +42,10 @@ export function Sumate() {
           <AnimatePresence mode="wait">
             {estado === "listo" ? (
               <motion.div key="ok" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} className="py-6 text-center" role="status">
-                <MiradaIsotipo className="mx-auto w-40" />
+                <motion.div initial={{ y: 12, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1, duration: 0.5 }}>
+                  <Logo bajada className="mx-auto h-20 w-auto sm:h-24" />
+                </motion.div>
+                <MiradaIsotipo className="mx-auto mt-6 w-24" />
                 <p className="mt-6 font-display text-3xl font-semibold">¡Bienvenido, fellow!</p>
                 <p className="mx-auto mt-3 max-w-sm text-cafe/75">
                   Te avisamos a <strong>{email}</strong> apenas Coffella abra en tu ciudad. Mientras tanto: la

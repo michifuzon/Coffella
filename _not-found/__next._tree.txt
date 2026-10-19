@@ -1,4 +1,4 @@
-:HL["/Coffella/_next/static/chunks/0f7du_2c7qhkd.css","style"]
+:HL["/Coffella/_next/static/chunks/0-jb614geprar.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
-0:{"b":"KkbROrYFec3qFbqfOQVkT","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"gJiUsUJ849_8HgNZWaXss","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

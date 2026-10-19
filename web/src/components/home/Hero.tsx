@@ -6,47 +6,71 @@ import { MiradaIsotipo } from "@/components/brand/MiradaIsotipo";
 
 // Personas de ejemplo. Los nombres son ficticios: ilustran quiénes forman la comunidad.
 const FELLOWS = [
-  { name: "Sofi", role: "Barista", tone: "bg-naranja", pos: "left-[4%] top-[18%]", rot: -8 },
-  { name: "Tomás", role: "Tostador", tone: "bg-cafe text-blanco", pos: "right-[6%] top-[12%]", rot: 6 },
-  { name: "Lu", role: "Fan del café", tone: "bg-amarillo", pos: "left-[10%] bottom-[16%]", rot: 5 },
-  { name: "Café Ámbar", role: "Cafetería", tone: "bg-crema", pos: "right-[3%] bottom-[22%]", rot: -5 },
-  { name: "Juli", role: "Head roaster", tone: "bg-amarillo", pos: "left-[30%] top-[4%]", rot: 3 },
-  { name: "Nico", role: "Recién llegado", tone: "bg-blanco", pos: "right-[28%] bottom-[4%]", rot: -4 },
+  { name: "Sofi", role: "Barista", tone: "bg-naranja", pos: "left-[2%] top-[6%]", rot: -8 },
+  { name: "Tomás", role: "Tostador", tone: "bg-cafe text-blanco", pos: "right-[0%] top-[14%]", rot: 6 },
+  { name: "Lu", role: "Fan del café", tone: "bg-amarillo", pos: "left-[0%] bottom-[18%]", rot: 5 },
+  { name: "Café Ámbar", role: "Cafetería", tone: "bg-crema", pos: "right-[4%] bottom-[8%]", rot: -5 },
+  { name: "Nico", role: "Recién llegado", tone: "bg-blanco", pos: "left-[34%] bottom-[0%]", rot: -3 },
 ];
+
+const ease = [0.2, 0.8, 0.2, 1] as const;
 
 export function Hero() {
   const stage = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const enter = (delay: number) =>
+    reduce ? {} : { initial: { y: 24, opacity: 0 }, animate: { y: 0, opacity: 1 }, transition: { duration: 0.7, delay, ease } };
 
   return (
-    <section className="grain relative overflow-hidden pt-28 sm:pt-32" aria-labelledby="hero-title">
-      {/* halo degradado oficial, detrás de la taza */}
+    <section className="grain relative overflow-hidden" aria-labelledby="hero-title">
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[44%] h-[70vmin] w-[110vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-degradado opacity-70 blur-3xl"
+        className="pointer-events-none absolute -right-[20%] top-[10%] h-[80vmin] w-[90vmin] rounded-full bg-degradado opacity-60 blur-3xl"
       />
 
-      <div ref={stage} className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        <h1 id="hero-title" className="relative z-10 text-center font-display font-semibold leading-[1] tracking-tight">
-          <motion.span
-            className="block text-[clamp(2.1rem,5.6vw,5.25rem)]"
-            initial={reduce ? false : { y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
-          >
-            Detrás de cada taza
-          </motion.span>
-        </h1>
+      <div className="relative mx-auto grid min-h-[100svh] max-w-7xl items-center gap-8 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-4 lg:pt-24">
+        <div className="relative z-10 text-center lg:text-left">
+          <motion.p {...enter(0)} className="inline-flex items-center gap-2 rounded-full bg-amarillo px-3.5 py-1 font-display text-sm">
+            <span className="size-2 rounded-full bg-naranja" aria-hidden />
+            Comunidad cafetera
+          </motion.p>
 
-        {/* Escenario: la taza mira, los fellows se mueven alrededor */}
-        <div className="relative mx-auto mt-4 h-[clamp(200px,34vw,400px)] max-w-5xl">
-          <motion.div
-            className="absolute inset-x-0 top-1/2 mx-auto w-[min(72%,460px)] -translate-y-1/2"
-            initial={reduce ? false : { scale: 0.85, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
+          <motion.h1
+            id="hero-title"
+            {...enter(0.08)}
+            className="mt-6 font-display text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[1.02] tracking-tight"
           >
-            <MiradaIsotipo className="w-full drop-shadow-[0_30px_40px_rgba(54,30,28,0.18)]" />
+            Detrás de cada taza hay{" "}
+            <span className="relative whitespace-nowrap">
+              <span aria-hidden className="absolute -inset-x-2 bottom-[0.06em] top-[0.18em] -z-10 -rotate-1 rounded-2xl bg-naranja" />
+              alguien.
+            </span>
+          </motion.h1>
+
+          <motion.p {...enter(0.16)} className="mx-auto mt-6 max-w-xl text-lg text-cafe/80 sm:text-xl lg:mx-0">
+            Coffella es donde baristas, cafeterías, tostadores y fans del café se encuentran. Para descubrir
+            lugares, conocer a quién hizo tu café y encontrar tu propio lugar en la mesa.
+          </motion.p>
+
+          <motion.div {...enter(0.24)} className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+            <a href="#lado" className="rounded-full bg-cafe px-6 py-3.5 font-display font-semibold text-blanco transition-transform hover:-translate-y-0.5">
+              Encontrá tu lugar
+            </a>
+            <a href="#mapa" className="rounded-full border-2 border-cafe px-6 py-3 font-display font-semibold transition-colors hover:bg-amarillo">
+              Explorar cafeterías
+            </a>
+          </motion.div>
+        </div>
+
+        {/* La taza mira a quien pase; alrededor, la gente que forma la comunidad */}
+        <div ref={stage} className="relative mx-auto aspect-[5/4] w-full max-w-[560px]">
+          <motion.div
+            className="absolute inset-x-[8%] top-1/2 -translate-y-1/2"
+            initial={reduce ? false : { scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.9, delay: 0.2, ease }}
+          >
+            <MiradaIsotipo className="w-full drop-shadow-[0_24px_32px_rgba(54,30,28,0.16)]" />
           </motion.div>
 
           {FELLOWS.map((f, i) => (
@@ -58,60 +82,24 @@ export function Hero() {
               dragElastic={0.2}
               whileHover={{ scale: 1.06, rotate: 0 }}
               whileDrag={{ scale: 1.1, rotate: 0, zIndex: 30 }}
-              initial={reduce ? false : { opacity: 0, y: 20, rotate: f.rot }}
+              initial={reduce ? false : { opacity: 0, y: 16, rotate: f.rot }}
               animate={{ opacity: 1, y: 0, rotate: f.rot }}
               transition={{ delay: 0.5 + i * 0.08, type: "spring", stiffness: 220, damping: 18 }}
-              className={`sticker absolute z-20 hidden cursor-grab touch-none select-none items-center gap-2 rounded-full py-1.5 pl-1.5 pr-4 font-display text-sm active:cursor-grabbing sm:flex ${f.tone} ${f.pos}`}
+              className={`sticker absolute z-20 flex cursor-grab touch-none select-none items-center gap-2 rounded-full py-1 pl-1 pr-3 font-display text-xs active:cursor-grabbing sm:py-1.5 sm:pl-1.5 sm:pr-4 sm:text-sm ${f.tone} ${f.pos}`}
               aria-label={`${f.name}, ${f.role}`}
             >
-              <span className="grid size-8 place-items-center rounded-full bg-cafe font-semibold text-blanco ring-2 ring-blanco/60">
+              <span className="grid size-7 place-items-center rounded-full bg-cafe font-semibold text-blanco ring-2 ring-blanco/60 sm:size-8">
                 {f.name[0]}
               </span>
               <span className="text-left leading-tight">
                 <span className="block font-semibold">{f.name}</span>
-                <span className="block text-xs opacity-75">{f.role}</span>
+                <span className="block opacity-75">{f.role}</span>
               </span>
             </motion.button>
           ))}
-        </div>
 
-        <motion.p
-          aria-hidden
-          className="relative z-10 -mt-2 text-center font-display text-[clamp(2.1rem,5.6vw,5.25rem)] font-semibold leading-[1] tracking-tight"
-          initial={reduce ? false : { y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
-        >
-          hay{" "}
-          <span className="relative inline-block">
-            <span className="absolute -inset-x-3 -inset-y-1 -z-10 rounded-[2rem] bg-amarillo" />
-            alguien.
-          </span>
-        </motion.p>
-        <span className="sr-only">hay alguien.</span>
-
-        <div className="relative z-10 mx-auto mt-10 flex max-w-2xl flex-col items-center gap-6 pb-20 text-center">
-          <p className="text-lg text-cafe/80 sm:text-xl">
-            Coffella es la comunidad donde baristas, cafeterías, tostadores y fans del café se
-            encuentran. Para descubrir lugares, conocer a quién hizo tu café y encontrar tu propio
-            lugar en la mesa.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href="#lado"
-              className="rounded-full bg-cafe px-6 py-3.5 font-display font-semibold text-blanco transition-transform hover:-translate-y-0.5"
-            >
-              Encontrá tu lugar
-            </a>
-            <a
-              href="#mapa"
-              className="rounded-full border-2 border-cafe px-6 py-3 font-display font-semibold transition-colors hover:bg-amarillo"
-            >
-              Explorar cafeterías
-            </a>
-          </div>
-          <p className="hidden font-display text-xs text-cafe/60 sm:block">
-            Psst: mové el mouse. Arrastrá a cualquiera. Acá todos tienen lugar.
+          <p className="absolute -bottom-8 inset-x-0 hidden text-center font-display text-xs text-cafe/55 lg:block">
+            Mové el mouse. Arrastrá a cualquiera. Acá todos tienen lugar.
           </p>
         </div>
       </div>

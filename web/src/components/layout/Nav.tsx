@@ -42,11 +42,11 @@ export function Nav() {
         <div className="flex items-center gap-2">
           <a
             href="#sumate"
-            className="group hidden items-center gap-2 rounded-full bg-cafe py-2 pl-4 pr-2 font-display text-sm font-semibold text-blanco transition-transform hover:-translate-y-0.5 sm:flex"
+            className="group hidden items-center gap-2 rounded-full bg-cafe py-1 pl-4 pr-1 font-display text-sm font-semibold text-blanco transition-transform hover:-translate-y-0.5 sm:flex"
           >
             Sumate
-            <span className="grid size-7 place-items-center rounded-full bg-naranja transition-transform group-hover:rotate-12">
-              <MiradaIsotipo withDot={false} className="w-5" cupColor="var(--cafe)" eyeColor="var(--blanco)" title="" />
+            <span className="grid size-10 place-items-center rounded-full bg-naranja transition-transform group-hover:scale-110">
+              <MiradaIsotipo className="w-[30px]" cupColor="var(--cafe)" eyeColor="var(--blanco)" title="" />
             </span>
           </a>
           <button

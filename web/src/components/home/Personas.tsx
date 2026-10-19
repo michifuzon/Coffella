@@ -34,7 +34,7 @@ export function Personas() {
         </div>
       </div>
 
-      <ul className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 [scrollbar-width:thin] sm:px-6 xl:px-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
+      <ul className="mt-12 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-6 [scrollbar-width:thin] after:block after:w-px after:shrink-0 sm:scroll-px-6 sm:px-6 xl:scroll-px-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] xl:px-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
         {PERSONAS.map((p) => (
           <li key={p.id} className="snap-start">
             <PerfilCard persona={p} />
@@ -76,7 +76,7 @@ function PerfilCard({ persona: p }: { persona: Persona }) {
     <article className={`relative flex h-full w-[min(84vw,360px)] flex-col overflow-hidden rounded-[2rem] p-7 ${t.card}`}>
       <div className="flex items-center gap-4">
         <div className="relative grid size-16 shrink-0 place-items-center rounded-full bg-cafe/10">
-          <MiradaIsotipo withDot={false} className="w-12" cupColor={t.cup} eyeColor={t.eye} title="" />
+          <MiradaIsotipo className="w-12" cupColor={t.cup} eyeColor={t.eye} title="" />
         </div>
         <div>
           <h3 className="font-display text-xl font-semibold">{p.nombre}</h3>

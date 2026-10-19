@@ -4,9 +4,9 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 
 /**
- * Isotipo de Coffella con mirada viva: la taza mira a "alguien" (el punto)
- * y, cuando hay alguien más cerca —el cursor—, lo sigue con los ojos.
- * Geometría del cuerpo y el punto tomada de Coffella_Logo-04.svg.
+ * Isotipo de Coffella con mirada viva: en reposo mira hacia su asa, como en el logo,
+ * y cuando hay alguien cerca —el cursor— lo sigue con los ojos.
+ * Geometría del cuerpo y el asa tomada de Coffella_Logo-04.svg. El isotipo siempre va completo.
  */
 
 const CUP =
@@ -17,13 +17,11 @@ const EYES = [
   { cx: 694.5, cy: 491, r: 67.5 },
 ];
 const PUPIL_R = 33;
-// Pose de reposo: igual que en el logo, ambos ojos miran al punto (a la izquierda)
+// Pose de reposo: igual que en el logo, ambos ojos miran hacia el asa (a la izquierda)
 const REST = { x: -0.75, y: 0 };
 
 type Props = {
   className?: string;
-  /** muestra el punto (la persona a la que mira la taza) */
-  withDot?: boolean;
   cupColor?: string;
   eyeColor?: string;
   title?: string;
@@ -31,7 +29,6 @@ type Props = {
 
 export function MiradaIsotipo({
   className,
-  withDot = true,
   cupColor = "var(--cafe)",
   eyeColor = "var(--blanco)",
   title = "Isotipo de Coffella",
@@ -58,7 +55,7 @@ export function MiradaIsotipo({
       const k = Math.min(1, dist / 260);
       setLook({ x: (dx / dist) * k, y: (dy / dist) * k });
       clearTimeout(idle);
-      // si nadie se mueve un rato, vuelve a mirar al punto
+      // si nadie se mueve un rato, vuelve a la pose del logo
       idle = setTimeout(() => setLook(REST), 3200);
     };
     window.addEventListener("pointermove", onMove, { passive: true });
@@ -91,7 +88,8 @@ export function MiradaIsotipo({
       aria-label={title}
     >
       <path d={CUP} fill={cupColor} />
-      {withDot && <circle cx={300.48} cy={445.59} r={75.65} fill={cupColor} />}
+      {/* Asa de la taza: parte obligatoria del isotipo, nunca se omite */}
+      <circle cx={300.48} cy={445.59} r={75.65} fill={cupColor} />
       {EYES.map((eye, i) => {
         const max = eye.r - PUPIL_R * 0.55;
         return (

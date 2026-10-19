@@ -1,4 +1,4 @@
 :HL["/Coffella/_next/static/chunks/1tadbg_8zi7u2.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
-0:{"b":"8D3CGuohzcpWHhBxf7zNd","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"966C_IFV8iTICCmOjjlUT","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

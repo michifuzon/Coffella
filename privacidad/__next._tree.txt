@@ -1,4 +1,4 @@
-:HL["/Coffella/_next/static/chunks/10ee1dtznffyj.css","style"]
+:HL["/Coffella/_next/static/chunks/1ndd_v6olp-zw.css","style"]
 :HL["/Coffella/_next/static/media/Figtree_Bold-s.p.0yxkq67it_4on.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/Coffella/_next/static/media/Figtree_Medium-s.p.22_t1cxt5d66y.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/Coffella/_next/static/media/Figtree_Regular-s.p.1rrcdarr55e54.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
@@ -10,4 +10,4 @@
 :HL["/Coffella/brand/wordmark-bajada.svg","image"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"privacidad","h":96,"c":"$Q2"}]]
-0:{"b":"YQSoKI0LLVKDRJAPDDLYs","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"HiQItDrOWw2LgktTRs9DT","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

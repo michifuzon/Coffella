@@ -12,7 +12,7 @@ export function Club() {
   const lleno = sellos >= TOTAL;
 
   return (
-    <section id="club" className="relative bg-blanco py-24 sm:py-32" aria-labelledby="club-title">
+    <section id="club" className="relative overflow-hidden bg-blanco py-24 sm:py-32" aria-labelledby="club-title">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div>
           <Eyebrow>Coffella Club</Eyebrow>
@@ -45,12 +45,12 @@ export function Club() {
         <div className="relative">
           <div aria-hidden className="absolute -inset-6 rounded-[3rem] bg-degradado opacity-80 blur-2xl" />
           <div className="relative rounded-[2.5rem] bg-cafe p-6 text-blanco shadow-2xl sm:p-10">
-            <div className="flex items-start justify-between">
+            <div className="flex flex-col-reverse items-start gap-3 sm:flex-row sm:justify-between">
               <div>
                 <p className="font-display text-xs uppercase tracking-widest text-amarillo">Tarjeta de sellos</p>
                 <p className="mt-1 font-display text-2xl font-semibold">Café Ámbar</p>
               </div>
-              <Prototipo className="text-blanco" />
+              <Prototipo className="shrink-0 text-blanco" />
             </div>
 
             <ol className="mt-8 grid grid-cols-4 gap-3" aria-label={`${sellos} de ${TOTAL} sellos`}>

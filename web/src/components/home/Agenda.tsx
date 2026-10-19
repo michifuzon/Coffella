@@ -26,7 +26,7 @@ export function Agenda() {
     <section id="agenda" className="relative overflow-hidden bg-amarillo py-24 sm:py-32" aria-labelledby="agenda-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="lg:sticky lg:top-28 lg:self-start">
+          <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <Eyebrow className="bg-blanco">Agenda de la comunidad</Eyebrow>
             <h2 id="agenda-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
               Lo que se está tomando esta semana.
@@ -64,8 +64,8 @@ export function Agenda() {
             <Prototipo className="mt-6" />
           </div>
 
-          <div>
-            <div className="flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none]" role="group" aria-label="Elegí un día">
+          <div className="min-w-0">
+            <div className="-mx-4 flex gap-2 overflow-x-auto px-4 sm:mx-0 sm:px-0 pb-2 [scrollbar-width:none]" role="group" aria-label="Elegí un día">
               <button
                 onClick={() => setDia(null)}
                 aria-pressed={dia === null}

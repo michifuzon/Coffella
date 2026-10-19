@@ -57,9 +57,9 @@ export function Sumate() {
               </motion.div>
             ) : (
               <motion.form key="form" onSubmit={enviar} noValidate initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-col-reverse items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <p className="font-display text-2xl font-semibold">Sumate a Coffella</p>
-                  <Prototipo />
+                  <Prototipo className="shrink-0" />
                 </div>
                 <fieldset className="mt-6">
                   <legend className="text-sm text-cafe/70">¿De qué lado de la taza estás?</legend>

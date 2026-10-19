@@ -95,7 +95,7 @@ export function Lados() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-8 grid gap-4 lg:grid-cols-[1.4fr_1fr]"
+            className="mt-8 grid gap-4 lg:grid-cols-[1.4fr_1fr] [&>*]:min-w-0"
           >
             <div className={`relative overflow-hidden rounded-[2.5rem] p-8 sm:p-12 ${lado.color}`}>
               <p className="font-display text-sm uppercase tracking-widest opacity-70">{lado.rol}</p>

@@ -106,9 +106,9 @@ export function Mapa() {
           </div>
         </div>
 
-        <div className="mt-4 grid gap-4 lg:grid-cols-[1.35fr_1fr]">
+        <div className="mt-4 grid gap-4 lg:grid-cols-[1.35fr_1fr] [&>*]:min-w-0">
           {/* Mapa ilustrado */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-crema lg:aspect-auto lg:min-h-[560px]">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-crema sm:aspect-[4/3] lg:aspect-auto lg:min-h-[560px]">
             <MapaBase />
             {CAFETERIAS.map((c) => {
               const visible = resultados.some((r) => r.id === c.id);
@@ -147,7 +147,7 @@ export function Mapa() {
           </div>
 
           {/* Ficha */}
-          <div className="min-h-[480px] rounded-[2rem] bg-cafe p-6 text-blanco sm:p-8" aria-live="polite">
+          <div className="min-w-0 rounded-[2rem] bg-cafe p-6 text-blanco sm:min-h-[480px] sm:p-8" aria-live="polite">
             <AnimatePresence mode="wait">
               {activa ? (
                 <motion.article
@@ -165,7 +165,7 @@ export function Mapa() {
                       </p>
                       <h3 className="mt-2 font-display text-3xl font-semibold">{activa.nombre}</h3>
                     </div>
-                    <span className="shrink-0 rounded-full bg-blanco/10 px-3 py-1 text-xs">Actualizado {activa.actualizado}</span>
+                    <span className="shrink-0 whitespace-nowrap rounded-full bg-blanco/10 px-3 py-1 text-xs">Act. {activa.actualizado}</span>
                   </div>
 
                   <dl className="mt-6 grid gap-4 text-sm">

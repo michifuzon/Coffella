@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { MiradaIsotipo } from "@/components/brand/MiradaIsotipo";
 
 // Personas de ejemplo. Los nombres son ficticios: ilustran quiénes forman la comunidad.
@@ -17,9 +17,13 @@ const ease = [0.2, 0.8, 0.2, 1] as const;
 
 export function Hero() {
   const stage = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const enter = (delay: number) =>
-    reduce ? {} : { initial: { y: 24, opacity: 0 }, animate: { y: 0, opacity: 1 }, transition: { duration: 0.7, delay, ease } };
+  // El render es idéntico en server y cliente; MotionConfig (reducedMotion="user") se encarga
+  // de respetar "reducir movimiento" sin ramas que rompan la hidratación.
+  const enter = (delay: number) => ({
+    initial: { y: 24, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    transition: { duration: 0.7, delay, ease },
+  });
 
   return (
     <section className="grain relative overflow-hidden" aria-labelledby="hero-title">
@@ -66,7 +70,7 @@ export function Hero() {
         <div ref={stage} className="relative mx-auto aspect-[5/4] w-full max-w-[560px]">
           <motion.div
             className="absolute inset-x-[8%] top-1/2 -translate-y-1/2"
-            initial={reduce ? false : { scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.2, ease }}
           >
@@ -77,12 +81,12 @@ export function Hero() {
             <motion.button
               key={f.name}
               type="button"
-              drag={!reduce}
+              drag
               dragConstraints={stage}
               dragElastic={0.2}
               whileHover={{ scale: 1.06, rotate: 0 }}
               whileDrag={{ scale: 1.1, rotate: 0, zIndex: 30 }}
-              initial={reduce ? false : { opacity: 0, y: 16, rotate: f.rot }}
+              initial={{ opacity: 0, y: 16, rotate: f.rot }}
               animate={{ opacity: 1, y: 0, rotate: f.rot }}
               transition={{ delay: 0.5 + i * 0.08, type: "spring", stiffness: 220, damping: 18 }}
               className={`sticker absolute z-20 flex cursor-grab touch-none select-none items-center gap-2 rounded-full py-1 pl-1 pr-3 font-display text-xs active:cursor-grabbing sm:py-1.5 sm:pl-1.5 sm:pr-4 sm:text-sm ${f.tone} ${f.pos}`}

@@ -71,7 +71,7 @@ export default async function PerfilPage({ params }: { params: Promise<{ id: str
                   </li>
                 ))}
               </ol>
-              <h3 className="mt-8 font-display text-sm uppercase tracking-widest text-cafe/60">Lo que mejor hace</h3>
+              <h3 className="mt-8 font-display text-sm uppercase tracking-widest text-cafe/70">Lo que mejor hace</h3>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {p.especialidades.map((e) => (
                   <li key={e} className="rounded-full bg-blanco px-3.5 py-1.5 text-sm">{e}</li>
@@ -128,7 +128,7 @@ export default async function PerfilPage({ params }: { params: Promise<{ id: str
                 <ul className="mt-4 grid gap-3">
                   {eventos.map((e) => (
                     <li key={e.id} className="rounded-2xl bg-crema p-4">
-                      <p className="text-xs text-cafe/60">
+                      <p className="text-xs text-cafe/70">
                         {DIAS[e.dia]} {12 + e.dia} · {e.hora} · {NIVELES.find((n) => n.id === e.nivel)?.label}
                       </p>
                       <p className="mt-1 font-display font-semibold leading-snug">{e.titulo}</p>

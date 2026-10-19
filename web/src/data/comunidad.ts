@@ -438,3 +438,13 @@ export const CREDITOS_FOTOS: { id: string; autor: string; fuente: string; url: s
   { id: "curso-filtrados", autor: "Matt Bango", fuente: "stocksnap", url: "https://stocksnap.io/photo/coffee-cup-WUNOWNH63Z" },
   { id: "curso-tueste", autor: "JohannPiber", fuente: "flickr", url: "https://www.flickr.com/photos/151732499@N04/36656069524" },
 ];
+
+/** Fotos de ambiente de las cafeterías (en /public/fotos/cafeterias/<id>.jpg): CC0 vía Openverse, mismo grade. */
+export const CREDITOS_CAFETERIAS: { id: string; autor: string; fuente: string; url: string }[] = [
+  { id: "ambar", autor: "Sin autor", fuente: "rawpixel", url: "https://www.rawpixel.com/image/3301932/free-photo-image-interior-cafe" },
+  { id: "nomada", autor: "Jeff Sheldon", fuente: "stocksnap", url: "https://stocksnap.io/photo/coffee-cafe-8C35014CE3" },
+  { id: "pausa", autor: "Daquella manera", fuente: "flickr", url: "https://www.flickr.com/photos/62518311@N00/194447486" },
+  { id: "ritual", autor: "Sin autor", fuente: "rawpixel", url: "https://www.rawpixel.com/image/3303548/free-photo-image-espresso-machine-alloy-wheel-barista" },
+  { id: "terraza", autor: "Artem Beliaikin", fuente: "flickr", url: "https://www.flickr.com/photos/157635012@N07/41680343925" },
+  { id: "centro", autor: "Sin autor", fuente: "rawpixel", url: "https://www.rawpixel.com/image/3283414/free-photo-image-coffee-shop-tabletop" },
+];

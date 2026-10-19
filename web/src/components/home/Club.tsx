@@ -135,7 +135,7 @@ function PanelCafeterias() {
   return (
     <div className="mt-20 grid gap-6 rounded-[2.5rem] bg-crema p-6 sm:p-10 lg:grid-cols-[1fr_1.2fr]">
       <div>
-        <p className="font-display text-sm uppercase tracking-widest text-cafe/60">Para cafeterías</p>
+        <p className="font-display text-sm uppercase tracking-widest text-cafe/70">Para cafeterías</p>
         <h2 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">Mirá cómo vuelve tu gente.</h2>
         <p className="mt-4 max-w-md text-cafe/80">
           Métricas simples del club para tomar mejores decisiones: quién vuelve, cuántos canjes hubo y qué promociones
@@ -186,7 +186,7 @@ function PanelCafeterias() {
             </button>
           ))}
         </div>
-        <div className="mt-2 flex gap-[2px] text-center text-xs text-cafe/60">
+        <div className="mt-2 flex gap-[2px] text-center text-xs text-cafe/70">
           {SEMANAS.map((d) => (
             <span key={d.s} className="flex-1">{d.s}</span>
           ))}

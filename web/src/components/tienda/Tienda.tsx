@@ -92,7 +92,7 @@ export function Tienda() {
                       )}
                     </div>
                     <div className="flex flex-1 flex-col p-5">
-                      <p className="text-xs uppercase tracking-widest text-cafe/55">
+                      <p className="text-xs uppercase tracking-widest text-cafe/70">
                         {p.relacion} <strong className="font-semibold text-cafe">{p.quien}</strong>
                       </p>
                       <h2 className="mt-2 font-display text-lg font-semibold leading-snug">{p.nombre}</h2>
@@ -183,7 +183,7 @@ export function Tienda() {
           </aside>
         </div>
 
-        <p className="mt-12 text-xs text-cafe/50">
+        <p className="mt-12 text-xs text-cafe/70">
           Fotos de producto de referencia, de dominio público (CC0):{" "}
           {CREDITOS_FOTOS.map((c, i) => (
             <span key={c.id}>

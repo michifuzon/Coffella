@@ -2,7 +2,7 @@
 export function Prototipo({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border border-dashed border-current px-2.5 py-0.5 font-display text-[11px] uppercase tracking-wider opacity-70 ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border border-dashed border-current px-2.5 py-0.5 font-display text-[11px] uppercase tracking-wider opacity-85 ${className}`}
       title="Esta sección es un prototipo interactivo: los datos son de ejemplo."
     >
       <span className="size-1.5 rounded-full bg-naranja" aria-hidden />

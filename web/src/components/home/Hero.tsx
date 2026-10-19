@@ -99,12 +99,12 @@ export function Hero() {
               </span>
               <span className="text-left leading-tight">
                 <span className="block font-semibold">{f.name}</span>
-                <span className="block opacity-75">{f.role}</span>
+                <span className="block opacity-85">{f.role}</span>
               </span>
             </motion.button>
           ))}
 
-          <p className="absolute -bottom-8 inset-x-0 hidden text-center font-display text-xs text-cafe/55 lg:block">
+          <p className="absolute -bottom-8 inset-x-0 hidden text-center font-display text-xs text-cafe/70 lg:block">
             Mové el mouse. Arrastrá a cualquiera. Acá todos tienen lugar.
           </p>
         </div>

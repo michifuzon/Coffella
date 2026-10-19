@@ -100,7 +100,7 @@ export function Lados() {
             className="mt-8 grid gap-4 lg:grid-cols-[1.4fr_1fr] [&>*]:min-w-0"
           >
             <div className={`relative overflow-hidden rounded-[2.5rem] p-8 sm:p-12 ${lado.color}`}>
-              <p className="font-display text-sm uppercase tracking-widest opacity-70">{lado.rol}</p>
+              <p className="font-display text-sm uppercase tracking-widest opacity-85">{lado.rol}</p>
               <h3 className="mt-4 max-w-xl font-display text-3xl font-semibold leading-tight sm:text-5xl">{lado.titulo}</h3>
               <p className="mt-5 max-w-lg text-lg opacity-85">{lado.texto}</p>
               <ul className="relative z-10 mt-8 grid gap-2 pb-24 sm:grid-cols-2 sm:pb-28">
@@ -121,7 +121,7 @@ export function Lados() {
 
             <div className="flex flex-col gap-4">
               <div className="rounded-[2rem] bg-blanco p-6 sm:p-8">
-                <p className="font-display text-xs uppercase tracking-widest text-cafe/50">Pasando ahora en Coffella</p>
+                <p className="font-display text-xs uppercase tracking-widest text-cafe/70">Pasando ahora en Coffella</p>
                 <div className="mt-5 flex items-center gap-3">
                   <span className="grid size-11 place-items-center rounded-full bg-naranja font-display font-semibold">
                     {lado.momento.quien[0]}

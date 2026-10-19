@@ -110,7 +110,7 @@ export function Muro() {
                   placeholder="Ej: Gracias Sofi por el filtrado de ayer…"
                   className="mt-4 w-full resize-none rounded-2xl border-2 border-cafe/15 bg-blanco p-3 focus:border-cafe focus:outline-none"
                 />
-                <div className="mt-1 flex justify-between text-xs text-cafe/50">
+                <div className="mt-1 flex justify-between text-xs text-cafe/70">
                   <span>Sin estrellas ni puntajes.</span>
                   <span>{borrador.length}/280</span>
                 </div>
@@ -140,7 +140,7 @@ function MomentoCard({ m }: { m: Momento }) {
         </span>
         <p className="text-sm leading-tight">
           <strong className="font-display font-semibold">{m.de}</strong>
-          <span className="block opacity-70">{m.rolDe}</span>
+          <span className="block opacity-85">{m.rolDe}</span>
         </p>
         {m.para && (
           <p className="ml-auto flex items-center gap-1.5 text-sm">
@@ -153,7 +153,7 @@ function MomentoCard({ m }: { m: Momento }) {
         )}
       </div>
       <p className="mt-4 font-display text-lg leading-snug">{m.texto}</p>
-      <p className="mt-4 flex flex-wrap gap-x-2 text-xs opacity-70">
+      <p className="mt-4 flex flex-wrap gap-x-2 text-xs opacity-85">
         <span className="font-semibold uppercase tracking-wider">{e.etiqueta}</span>
         {m.lugar && <span>· {m.lugar}</span>}
         <span>· {m.hace}</span>

@@ -167,11 +167,11 @@ export function Sumate({ page = false }: { page?: boolean }) {
                 <button
                   type="submit"
                   disabled={estado === "enviando"}
-                  className="mt-2 w-full rounded-full bg-cafe py-4 font-display text-lg font-semibold text-blanco transition-transform hover:-translate-y-0.5 disabled:opacity-70"
+                  className="mt-2 w-full rounded-full bg-cafe py-4 font-display text-lg font-semibold text-blanco transition-transform hover:-translate-y-0.5 disabled:opacity-85"
                 >
                   {estado === "enviando" ? "Buscándote una silla…" : "Quiero mi lugar"}
                 </button>
-                <p className="mt-4 text-center text-xs text-cafe/55">
+                <p className="mt-4 text-center text-xs text-cafe/70">
                   Prototipo: el formulario todavía no guarda datos. Nada de spam, prometido.
                 </p>
               </motion.form>

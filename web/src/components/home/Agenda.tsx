@@ -57,7 +57,7 @@ export function Agenda({ page = false }: { page?: boolean }) {
                     >
                       <span>
                         <span className="block font-display font-semibold">{n.label}</span>
-                        <span className="block text-sm opacity-75">{n.desc}</span>
+                        <span className="block text-sm opacity-85">{n.desc}</span>
                       </span>
                       <span aria-hidden className={`size-4 shrink-0 rounded-full ${NIVEL_COLOR[n.id].split(" ")[0]} ring-2 ring-blanco`} />
                     </button>
@@ -86,7 +86,7 @@ export function Agenda({ page = false }: { page?: boolean }) {
                     aria-pressed={dia === i}
                     className={`relative w-14 shrink-0 rounded-2xl py-2 font-display transition-colors ${dia === i ? "bg-cafe text-blanco" : "bg-blanco/60 hover:bg-blanco"}`}
                   >
-                    <span className="block text-xs opacity-70">{d}</span>
+                    <span className="block text-xs opacity-85">{d}</span>
                     <span className="block text-lg font-semibold">{12 + i}</span>
                     {hay && <span aria-label="hay eventos" className="absolute right-2 top-2 size-1.5 rounded-full bg-naranja" />}
                   </button>
@@ -107,7 +107,7 @@ export function Agenda({ page = false }: { page?: boolean }) {
                     className="group grid gap-4 rounded-[1.75rem] bg-blanco p-5 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-6"
                   >
                     <div className="flex items-center gap-3 sm:block sm:w-16 sm:text-center">
-                      <p className="font-display text-xs uppercase text-cafe/50">{DIAS[e.dia]} {12 + e.dia}</p>
+                      <p className="font-display text-xs uppercase text-cafe/70">{DIAS[e.dia]} {12 + e.dia}</p>
                       <p className="font-display text-2xl font-semibold">{e.hora}</p>
                     </div>
                     <div>
@@ -126,7 +126,7 @@ export function Agenda({ page = false }: { page?: boolean }) {
                     <div className="flex items-center justify-between gap-3 sm:flex-col sm:items-end">
                       <p className="font-display font-semibold">
                         {e.precio ? `$${e.precio.toLocaleString("es-AR")}` : "Libre"}
-                        <span className="block text-xs font-normal text-cafe/60">{e.cupos} lugares</span>
+                        <span className="block text-xs font-normal text-cafe/70">{e.cupos} lugares</span>
                       </p>
                       <button
                         onClick={() => setReservado(reservado === e.id ? null : e.id)}

@@ -100,7 +100,7 @@ function PerfilCard({ persona: p, fluid = false }: { persona: Persona; fluid?: b
               {p.nombre}
             </Link>
           </h3>
-          <p className="text-sm opacity-75">{p.rol}</p>
+          <p className="text-sm opacity-85">{p.rol}</p>
           <p className="mt-1 inline-flex items-center gap-1 text-xs font-semibold">
             <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
               <circle cx="8" cy="8" r="8" fill="currentColor" />
@@ -122,7 +122,7 @@ function PerfilCard({ persona: p, fluid = false }: { persona: Persona; fluid?: b
               ))}
             </ul>
             <div className="mt-5">
-              <p className="text-xs uppercase tracking-widest opacity-60">Qué te recomienda pedir</p>
+              <p className="text-xs uppercase tracking-widest opacity-85">Qué te recomienda pedir</p>
               <p className="mt-1 text-sm">{p.recomienda}</p>
             </div>
             <ol className="mt-5 grid gap-2 border-l-2 border-current/20 pl-4 text-sm">
@@ -133,7 +133,7 @@ function PerfilCard({ persona: p, fluid = false }: { persona: Persona; fluid?: b
                 </li>
               ))}
             </ol>
-            <p className="mt-5 flex items-center gap-1.5 text-xs opacity-70">
+            <p className="mt-5 flex items-center gap-1.5 text-xs opacity-85">
               <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden><path d="M8 1 2 3.5v4C2 11 4.6 14 8 15c3.4-1 6-4 6-7.5v-4L8 1Z" fill="currentColor" /></svg>
               {p.barrio} · ubicación protegida
             </p>

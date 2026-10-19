@@ -2,7 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ATRIBUTOS, CAFETERIAS, type Atributo, type Cafeteria } from "@/data/comunidad";
+/* eslint-disable @next/next/no-img-element */
+import { ATRIBUTOS, CAFETERIAS, CREDITOS_CAFETERIAS, type Atributo, type Cafeteria } from "@/data/comunidad";
+import { asset } from "@/lib/asset";
 import { Eyebrow, Prototipo } from "@/components/ui/Prototipo";
 import { VerMas } from "@/components/ui/VerMas";
 import Link from "next/link";
@@ -39,7 +41,11 @@ export function Mapa({ page = false }: { page?: boolean }) {
           <div className="max-w-2xl">
             <Eyebrow>Explorar cafeterías</Eyebrow>
             <Title id="mapa-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
-              Sabé cómo se vive un lugar <span className="text-naranja">antes de llegar.</span>
+              Sabé cómo se vive un lugar{" "}
+              <span className="relative isolate whitespace-nowrap">
+                <span aria-hidden className="absolute -inset-x-1.5 bottom-[0.04em] top-[0.2em] -z-10 rounded-xl bg-naranja" />
+                antes de llegar.
+              </span>
             </Title>
           </div>
           <div className="flex flex-col items-start gap-3 md:items-end">
@@ -56,7 +62,7 @@ export function Mapa({ page = false }: { page?: boolean }) {
           <div className="flex flex-col gap-3 sm:flex-row">
             <label className="relative flex-1">
               <span className="sr-only">Buscar por nombre o barrio</span>
-              <svg aria-hidden viewBox="0 0 24 24" className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-cafe/50">
+              <svg aria-hidden viewBox="0 0 24 24" className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-cafe/70">
                 <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" strokeWidth="2" />
                 <path d="m20 20-3.5-3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </svg>
@@ -65,7 +71,7 @@ export function Mapa({ page = false }: { page?: boolean }) {
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
                 placeholder="Buscá por nombre o barrio en Córdoba"
-                className="w-full rounded-full bg-blanco py-3 pl-12 pr-4 placeholder:text-cafe/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-naranja"
+                className="w-full rounded-full bg-blanco py-3 pl-12 pr-4 placeholder:text-cafe/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-naranja"
               />
             </label>
             <div className="flex rounded-full bg-blanco p-1" role="radiogroup" aria-label="Tipo de cafetería">
@@ -162,6 +168,16 @@ export function Mapa({ page = false }: { page?: boolean }) {
                   transition={{ duration: 0.25 }}
                   className="flex h-full flex-col"
                 >
+                  <div className="relative -mx-2 -mt-2 mb-6 overflow-hidden rounded-[1.5rem] sm:-mx-4 sm:-mt-4">
+                    <img
+                      src={asset(`/fotos/cafeterias/${activa.id}.jpg`)}
+                      alt={`Ambiente de ${activa.nombre}`}
+                      width={960}
+                      height={720}
+                      className="aspect-[16/9] w-full object-cover"
+                    />
+                    <span className="absolute bottom-3 left-3 rounded-full bg-cafe/80 px-3 py-1 text-xs backdrop-blur">Foto del ambiente</span>
+                  </div>
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="font-display text-xs uppercase tracking-widest text-amarillo">
@@ -196,7 +212,7 @@ export function Mapa({ page = false }: { page?: boolean }) {
                   </ul>
 
                   <div className="mt-6 rounded-2xl bg-naranja p-4 text-cafe">
-                    <p className="font-display text-xs uppercase tracking-widest opacity-70">
+                    <p className="font-display text-xs uppercase tracking-widest opacity-85">
                       Hoy en la barra: {activa.baristaDeTurno}
                     </p>
                     <p className="mt-1 font-display text-lg leading-snug">“{activa.recomienda}”</p>
@@ -230,7 +246,7 @@ export function Mapa({ page = false }: { page?: boolean }) {
         {page ? (
           <div className="mt-16">
             <h2 className="font-display text-2xl font-semibold sm:text-3xl">
-              Todos los lugares <span className="text-cafe/50">({resultados.length})</span>
+              Todos los lugares <span className="text-cafe/70">({resultados.length})</span>
             </h2>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {resultados.map((c) => (
@@ -241,10 +257,20 @@ export function Mapa({ page = false }: { page?: boolean }) {
                       setSeleccion(c.id);
                       document.getElementById("mapa")?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className={`flex h-full w-full flex-col gap-3 rounded-[1.75rem] p-6 text-left transition-colors ${
+                    className={`group flex h-full w-full flex-col gap-3 overflow-hidden rounded-[1.75rem] p-6 pt-0 text-left transition-colors ${
                       activa?.id === c.id ? "bg-amarillo" : "bg-crema hover:bg-amarillo/60"
                     }`}
                   >
+                    <span className="-mx-6 mb-2 block overflow-hidden">
+                      <img
+                        src={asset(`/fotos/cafeterias/${c.id}.jpg`)}
+                        alt=""
+                        loading="lazy"
+                        width={960}
+                        height={720}
+                        className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </span>
                     <span className="flex w-full items-start justify-between gap-3">
                       <span>
                         <span className="block font-display text-xl font-semibold">{c.nombre}</span>
@@ -255,7 +281,7 @@ export function Mapa({ page = false }: { page?: boolean }) {
                       )}
                     </span>
                     <span className="text-sm">{c.ambiente}</span>
-                    <span className="mt-auto text-xs text-cafe/60">
+                    <span className="mt-auto text-xs text-cafe/70">
                       Hoy en la barra: {c.baristaDeTurno} · actualizado {c.actualizado}
                     </span>
                   </button>
@@ -271,6 +297,17 @@ export function Mapa({ page = false }: { page?: boolean }) {
                 Sugerir una cafetería
               </Link>
             </div>
+            <p className="mt-8 text-xs text-cafe/70">
+              Fotos de ambiente de referencia, de dominio público (CC0):{" "}
+              {CREDITOS_CAFETERIAS.map((c, i) => (
+                <span key={c.id}>
+                  <a href={c.url} target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-cafe">
+                    {c.autor}
+                  </a>
+                  {i < CREDITOS_CAFETERIAS.length - 1 ? ", " : "."}
+                </span>
+              ))}
+            </p>
           </div>
         ) : (
           <div className="mt-10 flex justify-center">

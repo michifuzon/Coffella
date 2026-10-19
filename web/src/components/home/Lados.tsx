@@ -53,7 +53,7 @@ export function Lados() {
   return (
     <section id="lado" className="relative bg-crema py-24 sm:py-32" aria-labelledby="lado-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div data-reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <Eyebrow>Una comunidad, muchas formas de vivir el café</Eyebrow>
             <h2 id="lado-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
@@ -114,7 +114,7 @@ export function Lados() {
               <MiradaIsotipo
                 className="pointer-events-none absolute -bottom-6 -right-6 w-40 sm:w-52"
                 cupColor={lado.id === "cafeteria" ? "var(--naranja)" : "var(--cafe)"}
-                eyeColor={lado.id === "cafeteria" ? "var(--cafe)" : "var(--blanco)"}
+                eyeColor="var(--blanco)"
                 title=""
               />
             </div>

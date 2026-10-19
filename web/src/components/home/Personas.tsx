@@ -21,7 +21,7 @@ export function Personas({ page = false }: { page?: boolean }) {
   return (
     <section id="personas" className={`relative overflow-hidden bg-cafe text-blanco ${page ? "pb-24 pt-32 sm:pb-32 sm:pt-40" : "py-24 sm:py-32"}`} aria-labelledby="personas-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div data-reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <span className="inline-block rounded-full bg-naranja px-3.5 py-1 font-display text-sm text-cafe">Las personas detrás del café</span>
             <Title id="personas-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
@@ -66,8 +66,8 @@ export function Personas({ page = false }: { page?: boolean }) {
           ["Tu ubicación es tuya", "Nunca mostramos en tiempo real dónde estás. El perfil público dice el barrio, y solo si querés."],
           ["Referencias verificadas", "Dueños y colegas verificados pueden validar tu experiencia. Nadie más."],
           ["Valoración de ida y vuelta", "Si alguien comenta tu trabajo, podés responder. Y reportar si algo estuvo fuera de lugar."],
-        ].map(([t, d]) => (
-          <div key={t} className="rounded-2xl bg-blanco/5 p-5">
+        ].map(([t, d], i) => (
+          <div key={t} data-reveal style={{ "--reveal-i": i } as React.CSSProperties} className="rounded-2xl bg-blanco/5 p-5">
             <p className="font-display font-semibold text-amarillo">{t}</p>
             <p className="mt-1 text-sm text-blanco/70">{d}</p>
           </div>

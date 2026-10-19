@@ -22,7 +22,7 @@ export function Muro() {
   return (
     <section className="relative bg-crema pb-24 pt-32 sm:pb-32 sm:pt-40" aria-labelledby="comunidad-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid items-end gap-8 lg:grid-cols-[1.3fr_1fr]">
+        <div data-reveal className="grid items-end gap-8 lg:grid-cols-[1.3fr_1fr]">
           <div>
             <Eyebrow className="bg-blanco">Comunidad</Eyebrow>
             <h1 id="comunidad-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">

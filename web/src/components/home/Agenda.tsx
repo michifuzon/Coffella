@@ -30,7 +30,7 @@ export function Agenda({ page = false }: { page?: boolean }) {
     <section id="agenda" className={`relative overflow-hidden bg-amarillo ${page ? "pb-24 pt-32 sm:pb-32 sm:pt-40" : "py-24 sm:py-32"}`} aria-labelledby="agenda-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
+          <div data-reveal className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <Eyebrow className="bg-blanco">Agenda de la comunidad</Eyebrow>
             <Title id="agenda-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
               Lo que se está tomando esta semana.

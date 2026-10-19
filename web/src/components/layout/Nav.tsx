@@ -14,6 +14,7 @@ const LINKS = [
   { href: RUTAS.personas, label: "Personas" },
   { href: RUTAS.comunidad, label: "Comunidad" },
   { href: RUTAS.club, label: "Club" },
+  { href: RUTAS.tienda, label: "Tienda" },
 ];
 
 export function Nav() {
@@ -31,13 +32,13 @@ export function Nav() {
           <Logo className="h-6 w-auto sm:h-7" />
         </Link>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-0.5 lg:flex">
           {LINKS.map((l) => (
             <li key={l.href}>
               <Link
                 href={l.href}
                 aria-current={activo(l.href) ? "page" : undefined}
-                className={`rounded-full px-4 py-2 font-display text-sm transition-colors hover:bg-amarillo hover:text-cafe ${
+                className={`rounded-full px-3.5 py-2 font-display text-sm transition-colors hover:bg-amarillo hover:text-cafe ${
                   activo(l.href) ? "bg-amarillo text-cafe" : "text-cafe/80"
                 }`}
               >
@@ -59,7 +60,7 @@ export function Nav() {
           </Link>
           <button
             type="button"
-            className="grid size-10 place-items-center rounded-full bg-amarillo md:hidden"
+            className="grid size-10 place-items-center rounded-full bg-amarillo lg:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -80,7 +81,7 @@ export function Nav() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            className="mx-auto mt-2 max-w-7xl rounded-3xl bg-cafe p-3 md:hidden"
+            className="mx-auto mt-2 max-w-7xl rounded-3xl bg-cafe p-3 lg:hidden"
           >
             <ul className="grid gap-1">
               {[...LINKS, { href: RUTAS.sumate, label: "Sumate" }].map((l) => (

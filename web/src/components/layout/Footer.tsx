@@ -16,6 +16,7 @@ const COLS = [
     l: [
       ["Comunidad", RUTAS.comunidad],
       ["Club", RUTAS.club],
+      ["Tienda", RUTAS.tienda],
       ["Sumate", RUTAS.sumate],
     ],
   },

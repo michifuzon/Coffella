@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
+import { asset } from "@/lib/asset";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { MiradaIsotipo } from "@/components/brand/MiradaIsotipo";
@@ -17,7 +19,7 @@ export function Club({ page = false }: { page?: boolean }) {
   return (
     <section id="club" className={`relative overflow-hidden bg-blanco ${page ? "pb-24 pt-32 sm:pb-32 sm:pt-40" : "py-24 sm:py-32"}`} aria-labelledby="club-title">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
-        <div>
+        <div data-reveal>
           <Eyebrow>Coffella Club</Eyebrow>
           <Title id="club-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
             Beneficios sin competencia.
@@ -45,11 +47,12 @@ export function Club({ page = false }: { page?: boolean }) {
           </div>
         </div>
 
-        <div className="relative">
+        <div data-reveal className="relative" style={{ "--reveal-i": 2 } as React.CSSProperties}>
           <div aria-hidden className="absolute -inset-6 rounded-[3rem] bg-degradado opacity-80 blur-2xl" />
           <div className="relative rounded-[2.5rem] bg-cafe p-6 text-blanco shadow-2xl sm:p-10">
             <div className="flex flex-col-reverse items-start gap-3 sm:flex-row sm:justify-between">
               <div>
+                <img src={asset("/brand/recursos/club.png")} alt="Coffella Club" width={640} height={331} className="mb-3 h-12 w-auto" />
                 <p className="font-display text-xs uppercase tracking-widest text-amarillo">Tarjeta de sellos</p>
                 <p className="mt-1 font-display text-2xl font-semibold">Café Ámbar</p>
               </div>

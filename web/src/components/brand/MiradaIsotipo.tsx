@@ -7,6 +7,7 @@ import { useReducedMotion } from "motion/react";
  * Isotipo de Coffella con mirada viva: en reposo mira hacia su asa, como en el logo,
  * y cuando hay alguien cerca —el cursor— lo sigue con los ojos.
  * Geometría del cuerpo y el asa tomada de Coffella_Logo-04.svg. El isotipo siempre va completo.
+ * Los ojos van siempre en un tono claro (blanco, crema, amarillo o naranja): ojos oscuros se ven tétricos.
  */
 
 const CUP =

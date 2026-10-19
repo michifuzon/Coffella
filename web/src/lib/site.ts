@@ -9,6 +9,7 @@ export const RUTAS = {
   persona: (id: string) => `/personas/${id}/`,
   comunidad: "/comunidad/",
   club: "/club/",
+  tienda: "/tienda/",
   sumate: "/sumate/",
   privacidad: "/privacidad/",
 } as const;

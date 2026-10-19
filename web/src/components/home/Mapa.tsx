@@ -35,7 +35,7 @@ export function Mapa({ page = false }: { page?: boolean }) {
   return (
     <section id="mapa" className={`relative bg-blanco ${page ? "pb-24 pt-32 sm:pb-32 sm:pt-40" : "py-24 sm:py-32"}`} aria-labelledby="mapa-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div data-reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <Eyebrow>Explorar cafeterías</Eyebrow>
             <Title id="mapa-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">

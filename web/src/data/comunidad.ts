@@ -390,3 +390,51 @@ export const MOMENTOS: Momento[] = [
   { id: "m8", tipo: "aprendizaje", de: "Mati", rolDe: "Bar lead", texto: "Calibré el molino tres veces hoy. La humedad cambia todo. Nadie lo ve, pero se nota en la taza.", hace: "hace 3 días" },
   { id: "m9", tipo: "gracias", de: "Café Ámbar", rolDe: "Cafetería", para: "Tomás", texto: "Gracias por el lote de Etiopía. La gente pregunta por él todos los días.", hace: "hace 4 días" },
 ];
+
+export type CategoriaProducto = "cafe" | "herramientas" | "cursos";
+
+export const CATEGORIAS_PRODUCTO: { id: CategoriaProducto; label: string }[] = [
+  { id: "cafe", label: "Café de tostadores aliados" },
+  { id: "herramientas", label: "Herramientas" },
+  { id: "cursos", label: "Cursos" },
+];
+
+export type Producto = {
+  id: string;
+  nombre: string;
+  categoria: CategoriaProducto;
+  /** quién está detrás: tostador, barista que lo recomienda o lo enseña */
+  quien: string;
+  relacion: "Tostado por" | "Recomendado por" | "Lo enseña";
+  detalle: string;
+  precio: number;
+  /** foto en /public/fotos/tienda/<imagen>.jpg (ver CREDITOS_FOTOS) */
+  imagen: string;
+  profesional?: boolean;
+  tueste?: string;
+};
+
+export const PRODUCTOS: Producto[] = [
+  { id: "huila", nombre: "Colombia Huila · 250 g", categoria: "cafe", quien: "Tomás · Ritual Tostadores", relacion: "Tostado por", detalle: "Dulce, notas a panela y naranja. Ideal para filtrado.", precio: 14500, imagen: "huila", tueste: "24 sep" },
+  { id: "etiopia", nombre: "Etiopía lavado · 250 g", categoria: "cafe", quien: "Tomás · Ritual Tostadores", relacion: "Tostado por", detalle: "Floral y cítrico. El que hace preguntar “¿esto es café?”.", precio: 16800, imagen: "etiopia", tueste: "26 sep" },
+  { id: "blend", nombre: "Blend de la casa · 500 g", categoria: "cafe", quien: "Nómada", relacion: "Tostado por", detalle: "Chocolate y nuez. Para espresso de todos los días.", precio: 19900, imagen: "blend", tueste: "22 sep" },
+  { id: "v60", nombre: "Dripper V60 + 100 filtros", categoria: "herramientas", quien: "Sofi", relacion: "Recomendado por", detalle: "Para empezar a filtrar en casa sin complicarte.", precio: 24500, imagen: "v60" },
+  { id: "moka", nombre: "Cafetera italiana · 6 tazas", categoria: "herramientas", quien: "Don Raúl", relacion: "Recomendado por", detalle: "La de toda la vida. Bien usada, hace magia.", precio: 32000, imagen: "moka" },
+  { id: "balanza", nombre: "Balanza con timer · 0,1 g", categoria: "herramientas", quien: "Caro", relacion: "Recomendado por", detalle: "Pesar es el secreto que nadie te cuenta. Repetís la receta que te gustó.", precio: 27000, imagen: "balanza", profesional: true },
+  { id: "jarra", nombre: "Jarra para latte art · 350 ml", categoria: "herramientas", quien: "Juli", relacion: "Recomendado por", detalle: "Pico fino y buen balance. La que usa en sus talleres.", precio: 18000, imagen: "jarra", profesional: true },
+  { id: "curso-filtrados", nombre: "Filtrados en casa · 2 encuentros", categoria: "cursos", quien: "Sofi", relacion: "Lo enseña", detalle: "De la molienda a la taza, sin palabras raras.", precio: 15000, imagen: "curso-filtrados" },
+  { id: "curso-tueste", nombre: "Tueste básico para baristas", categoria: "cursos", quien: "Tomás", relacion: "Lo enseña", detalle: "Curvas, desarrollo y cata de lo que tostaste.", precio: 48000, imagen: "curso-tueste", profesional: true },
+];
+
+/** Fotos de la tienda: dominio público (CC0) vía Openverse. Editadas con un mismo grade de color. */
+export const CREDITOS_FOTOS: { id: string; autor: string; fuente: string; url: string }[] = [
+  { id: "huila", autor: "Image Catalog", fuente: "flickr", url: "https://www.flickr.com/photos/132795455@N08/17097173728" },
+  { id: "etiopia", autor: "Joshua Willson", fuente: "flickr", url: "https://www.flickr.com/photos/146652545@N06/31845643530" },
+  { id: "blend", autor: "megforce1", fuente: "flickr", url: "https://www.flickr.com/photos/35608308@N05/22247100615" },
+  { id: "v60", autor: "Kristin Hardwick", fuente: "stocksnap", url: "https://stocksnap.io/photo/pour-over-0PZDINJEXE" },
+  { id: "moka", autor: "ajay_suresh", fuente: "flickr", url: "https://www.flickr.com/photos/83136374@N05/55013301353" },
+  { id: "balanza", autor: "Kristin Hardwick", fuente: "stocksnap", url: "https://stocksnap.io/photo/pour-over-UE2INO4TXK" },
+  { id: "jarra", autor: "Sin autor", fuente: "rawpixel", url: "https://www.rawpixel.com/image/3303274/free-photo-image-coffee-beverage-camera" },
+  { id: "curso-filtrados", autor: "Matt Bango", fuente: "stocksnap", url: "https://stocksnap.io/photo/coffee-cup-WUNOWNH63Z" },
+  { id: "curso-tueste", autor: "JohannPiber", fuente: "flickr", url: "https://www.flickr.com/photos/151732499@N04/36656069524" },
+];

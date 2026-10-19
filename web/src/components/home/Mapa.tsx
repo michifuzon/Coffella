@@ -244,10 +244,16 @@ function MapaBase() {
         <path d="M-10 150 Q 120 130 230 160 T 420 120" />
         <path d="M210 -10 L 240 310" />
       </g>
-      <g fill="#dcd9bf">
-        <rect x="190" y="210" width="70" height="52" rx="14" />
-        <rect x="60" y="70" width="44" height="34" rx="12" />
-        <rect x="300" y="200" width="50" height="40" rx="12" />
+      {/* Parques: formas orgánicas con arbolitos, sobre la grilla */}
+      <g>
+        <path d="M188 214c14-12 46-14 66-6s26 26 14 40-44 20-66 14-28-36-14-48Z" fill="#e2dfc4" />
+        <path d="M312 206c10-8 30-8 38 2s4 26-10 30-30 2-34-10 0-16 6-22Z" fill="#e2dfc4" />
+        <g fill="var(--amarillo)" opacity=".9">
+          {[[208, 228], [224, 222], [240, 230], [216, 244], [234, 246], [252, 240], [322, 216], [336, 222], [328, 232]].map(([cx, cy]) => (
+            <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4.5" />
+          ))}
+        </g>
+        <text x="200" y="272" fontSize="8" fill="var(--cafe)" opacity=".45" fontFamily="var(--font-sora)">Parque Sarmiento</text>
       </g>
       <path d="M-10 92 C 60 70, 110 120, 170 98 S 290 60, 410 84" fill="none" stroke="var(--amarillo)" strokeWidth="14" strokeLinecap="round" />
       <text x="330" y="74" fontSize="9" fill="var(--cafe)" opacity=".45" fontFamily="var(--font-sora)">Río Suquía</text>

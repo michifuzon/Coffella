@@ -1,0 +1,13 @@
+:HL["/Coffella/_next/static/chunks/10ee1dtznffyj.css","style"]
+:HL["/Coffella/_next/static/media/Figtree_Bold-s.p.0yxkq67it_4on.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Coffella/_next/static/media/Figtree_Medium-s.p.22_t1cxt5d66y.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Coffella/_next/static/media/Figtree_Regular-s.p.1rrcdarr55e54.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Coffella/_next/static/media/Figtree_SemiBold-s.p.3upub-p54qef2.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
+:HL["/Coffella/_next/static/media/Sora_Bold-s.p.2_3h806rft4pv.otf","font",{"crossOrigin":"","type":"font/otf"}]
+:HL["/Coffella/_next/static/media/Sora_Light-s.p.1mpd0nb2yvc9u.otf","font",{"crossOrigin":"","type":"font/otf"}]
+:HL["/Coffella/_next/static/media/Sora_Regular-s.p.2kntme7q1l5hv.otf","font",{"crossOrigin":"","type":"font/otf"}]
+:HL["/Coffella/_next/static/media/Sora_SemiBold-s.p.1ovkvm_2tks6h.otf","font",{"crossOrigin":"","type":"font/otf"}]
+:HL["/Coffella/brand/wordmark-bajada.svg","image"]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"personas","h":96,"c":"$Q2"}]]
+0:{"b":"YQSoKI0LLVKDRJAPDDLYs","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

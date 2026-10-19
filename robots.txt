@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://michifuzon.github.io/Coffella/sitemap.xml

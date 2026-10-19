@@ -4,21 +4,24 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { MiradaIsotipo } from "@/components/brand/MiradaIsotipo";
 import { Eyebrow, Prototipo } from "@/components/ui/Prototipo";
+import { VerMas } from "@/components/ui/VerMas";
+import { RUTAS } from "@/lib/site";
 
 const TOTAL = 8;
 
-export function Club() {
+export function Club({ page = false }: { page?: boolean }) {
+  const Title = page ? "h1" : "h2";
   const [sellos, setSellos] = useState(5);
   const lleno = sellos >= TOTAL;
 
   return (
-    <section id="club" className="relative overflow-hidden bg-blanco py-24 sm:py-32" aria-labelledby="club-title">
+    <section id="club" className={`relative overflow-hidden bg-blanco ${page ? "pb-24 pt-32 sm:pb-32 sm:pt-40" : "py-24 sm:py-32"}`} aria-labelledby="club-title">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div>
           <Eyebrow>Coffella Club</Eyebrow>
-          <h2 id="club-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
+          <Title id="club-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
             Beneficios sin competencia.
-          </h2>
+          </Title>
           <p className="mt-5 max-w-md text-lg text-cafe/80">
             Una tarjeta de sellos de las de siempre, en el celular. Juntás cafés en las cafeterías del club
             y te llevás uno de regalo. Nada más. Nada menos.
@@ -101,6 +104,99 @@ export function Club() {
           </div>
         </div>
       </div>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        {page ? <PanelCafeterias /> : (
+          <div className="mt-14 flex justify-center">
+            <VerMas href={RUTAS.club}>Cómo funciona el club</VerMas>
+          </div>
+        )}
+      </div>
     </section>
+  );
+}
+
+// Datos de ejemplo: visitas de socios del club por semana en una cafetería.
+const SEMANAS = [
+  { s: "Sem 1", v: 62 },
+  { s: "Sem 2", v: 71 },
+  { s: "Sem 3", v: 68 },
+  { s: "Sem 4", v: 84 },
+  { s: "Sem 5", v: 79 },
+  { s: "Sem 6", v: 93 },
+];
+
+function PanelCafeterias() {
+  const [hover, setHover] = useState<number | null>(null);
+  const max = 100;
+  return (
+    <div className="mt-20 grid gap-6 rounded-[2.5rem] bg-crema p-6 sm:p-10 lg:grid-cols-[1fr_1.2fr]">
+      <div>
+        <p className="font-display text-sm uppercase tracking-widest text-cafe/60">Para cafeterías</p>
+        <h2 className="mt-3 font-display text-3xl font-semibold leading-tight sm:text-4xl">Mirá cómo vuelve tu gente.</h2>
+        <p className="mt-4 max-w-md text-cafe/80">
+          Métricas simples del club para tomar mejores decisiones: quién vuelve, cuántos canjes hubo y qué promociones
+          funcionaron. Siempre en números agregados, sin exponer a nadie.
+        </p>
+        <dl className="mt-8 grid grid-cols-3 gap-3">
+          {[
+            ["42%", "vuelve en 30 días"],
+            ["126", "canjes del mes"],
+            ["+18%", "visitas con promo"],
+          ].map(([n, l]) => (
+            <div key={l} className="rounded-2xl bg-blanco p-4">
+              <dt className="sr-only">{l}</dt>
+              <dd className="font-display text-2xl font-semibold sm:text-3xl">{n}</dd>
+              <dd className="mt-1 text-xs text-cafe/70">{l}</dd>
+            </div>
+          ))}
+        </dl>
+        <Prototipo className="mt-6" />
+      </div>
+
+      <figure className="rounded-[2rem] bg-blanco p-6">
+        <figcaption className="font-display font-semibold">Visitas de socios por semana</figcaption>
+        <div className="relative mt-6 flex h-52 items-end gap-[2px] border-b border-cafe/15" role="img" aria-label="Visitas por semana, de 62 a 93">
+          {[25, 50, 75].map((g) => (
+            <span key={g} aria-hidden className="absolute inset-x-0 border-t border-dashed border-cafe/10" style={{ bottom: `${g}%` }} />
+          ))}
+          {SEMANAS.map((d, i) => (
+            <button
+              key={d.s}
+              type="button"
+              onMouseEnter={() => setHover(i)}
+              onMouseLeave={() => setHover(null)}
+              onFocus={() => setHover(i)}
+              onBlur={() => setHover(null)}
+              aria-label={`${d.s}: ${d.v} visitas`}
+              className="relative flex h-full flex-1 items-end justify-center px-2"
+            >
+              <span
+                className={`block w-full max-w-10 rounded-t-[4px] transition-colors ${hover === i ? "bg-cafe" : "bg-naranja"}`}
+                style={{ height: `${(d.v / max) * 100}%` }}
+              />
+              {hover === i && (
+                <span className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-cafe px-2.5 py-1 text-xs text-blanco">
+                  {d.v} visitas
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+        <div className="mt-2 flex gap-[2px] text-center text-xs text-cafe/60">
+          {SEMANAS.map((d) => (
+            <span key={d.s} className="flex-1">{d.s}</span>
+          ))}
+        </div>
+        <table className="sr-only">
+          <caption>Visitas de socios por semana</caption>
+          <tbody>
+            {SEMANAS.map((d) => (
+              <tr key={d.s}><th scope="row">{d.s}</th><td>{d.v}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </figure>
+    </div>
   );
 }

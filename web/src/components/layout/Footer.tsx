@@ -1,10 +1,26 @@
+import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
+import { RUTAS } from "@/lib/site";
 
 const COLS = [
-  { t: "Coffella", l: [["Cafeterías", "#mapa"], ["Agenda", "#agenda"], ["Personas", "#personas"], ["Club", "#club"]] },
-  { t: "Comunidad", l: [["Instagram", "#"], ["LinkedIn", "#"], ["Contacto", "#"]] },
-  { t: "Legal", l: [["Privacidad", "#"], ["Términos", "#"], ["Cookies", "#"]] },
-];
+  {
+    t: "Descubrí",
+    l: [
+      ["Cafeterías", RUTAS.cafeterias],
+      ["Agenda", RUTAS.agenda],
+      ["Personas", RUTAS.personas],
+    ],
+  },
+  {
+    t: "Participá",
+    l: [
+      ["Comunidad", RUTAS.comunidad],
+      ["Club", RUTAS.club],
+      ["Sumate", RUTAS.sumate],
+    ],
+  },
+  { t: "Cuidado", l: [["Privacidad", RUTAS.privacidad]] },
+] as const;
 
 export function Footer() {
   return (
@@ -12,7 +28,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="flex flex-col justify-between gap-12 md:flex-row">
           <div>
-            <Logo bajada tone="blanco" className="h-16 w-auto sm:h-20" />
+            <Link href={RUTAS.inicio} aria-label="Coffella, inicio">
+              <Logo bajada tone="blanco" className="h-16 w-auto sm:h-20" />
+            </Link>
             <p className="mt-6 max-w-xs text-blanco/70">
               Hay más detrás de esta taza. Una comunidad de fellows unidos por el café.
             </p>
@@ -24,7 +42,9 @@ export function Footer() {
                 <ul className="mt-4 grid gap-2 text-sm">
                   {c.l.map(([label, href]) => (
                     <li key={label}>
-                      <a href={href} className="text-blanco/75 transition-colors hover:text-naranja">{label}</a>
+                      <Link href={href} className="text-blanco/75 transition-colors hover:text-naranja">
+                        {label}
+                      </Link>
                     </li>
                   ))}
                 </ul>

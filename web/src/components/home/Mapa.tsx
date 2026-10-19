@@ -4,10 +4,14 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ATRIBUTOS, CAFETERIAS, type Atributo, type Cafeteria } from "@/data/comunidad";
 import { Eyebrow, Prototipo } from "@/components/ui/Prototipo";
+import { VerMas } from "@/components/ui/VerMas";
+import Link from "next/link";
+import { RUTAS } from "@/lib/site";
 
 const precio = (n: number) => `$${n.toLocaleString("es-AR")}`;
 
-export function Mapa() {
+export function Mapa({ page = false }: { page?: boolean }) {
+  const Title = page ? "h1" : "h2";
   const [filtros, setFiltros] = useState<Atributo[]>([]);
   const [busqueda, setBusqueda] = useState("");
   const [tipo, setTipo] = useState<"Todas" | Cafeteria["tipo"]>("Todas");
@@ -29,14 +33,14 @@ export function Mapa() {
     setFiltros((f) => (f.includes(id) ? f.filter((x) => x !== id) : [...f, id]));
 
   return (
-    <section id="mapa" className="relative bg-blanco py-24 sm:py-32" aria-labelledby="mapa-title">
+    <section id="mapa" className={`relative bg-blanco ${page ? "pb-24 pt-32 sm:pb-32 sm:pt-40" : "py-24 sm:py-32"}`} aria-labelledby="mapa-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <Eyebrow>Explorar cafeterías</Eyebrow>
-            <h2 id="mapa-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
+            <Title id="mapa-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
               Sabé cómo se vive un lugar <span className="text-naranja">antes de llegar.</span>
-            </h2>
+            </Title>
           </div>
           <div className="flex flex-col items-start gap-3 md:items-end">
             <p className="max-w-sm text-cafe/70 md:text-right">
@@ -222,6 +226,57 @@ export function Mapa() {
             </AnimatePresence>
           </div>
         </div>
+
+        {page ? (
+          <div className="mt-16">
+            <h2 className="font-display text-2xl font-semibold sm:text-3xl">
+              Todos los lugares <span className="text-cafe/50">({resultados.length})</span>
+            </h2>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {resultados.map((c) => (
+                <li key={c.id}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSeleccion(c.id);
+                      document.getElementById("mapa")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className={`flex h-full w-full flex-col gap-3 rounded-[1.75rem] p-6 text-left transition-colors ${
+                      activa?.id === c.id ? "bg-amarillo" : "bg-crema hover:bg-amarillo/60"
+                    }`}
+                  >
+                    <span className="flex w-full items-start justify-between gap-3">
+                      <span>
+                        <span className="block font-display text-xl font-semibold">{c.nombre}</span>
+                        <span className="block text-sm text-cafe/70">{c.tipo} · {c.barrio}</span>
+                      </span>
+                      {c.atributos.includes("abierto") && (
+                        <span className="shrink-0 rounded-full bg-cafe px-2.5 py-0.5 text-xs text-blanco">Abierto</span>
+                      )}
+                    </span>
+                    <span className="text-sm">{c.ambiente}</span>
+                    <span className="mt-auto text-xs text-cafe/60">
+                      Hoy en la barra: {c.baristaDeTurno} · actualizado {c.actualizado}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-[2rem] bg-cafe p-6 text-blanco sm:flex-row sm:items-center sm:p-8">
+              <div>
+                <p className="font-display text-xl font-semibold">¿Falta tu lugar favorito?</p>
+                <p className="mt-1 text-blanco/70">Seguro alguien más lo conoce. Contanos y lo sumamos al mapa.</p>
+              </div>
+              <Link href={RUTAS.sumate} className="shrink-0 rounded-full bg-naranja px-5 py-3 font-display text-sm font-semibold text-cafe">
+                Sugerir una cafetería
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-10 flex justify-center">
+            <VerMas href={RUTAS.cafeterias}>Ver todas las cafeterías</VerMas>
+          </div>
+        )}
       </div>
     </section>
   );

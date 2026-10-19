@@ -4,6 +4,9 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { EVENTOS, NIVELES, type Nivel } from "@/data/comunidad";
 import { Eyebrow, Prototipo } from "@/components/ui/Prototipo";
+import { VerMas } from "@/components/ui/VerMas";
+import Link from "next/link";
+import { RUTAS } from "@/lib/site";
 
 const DIAS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 const NIVEL_COLOR: Record<Nivel, string> = {
@@ -12,7 +15,8 @@ const NIVEL_COLOR: Record<Nivel, string> = {
   profes: "bg-cafe text-blanco",
 };
 
-export function Agenda() {
+export function Agenda({ page = false }: { page?: boolean }) {
+  const Title = page ? "h1" : "h2";
   const [dia, setDia] = useState<number | null>(null);
   const [nivel, setNivel] = useState<Nivel | null>(null);
   const [reservado, setReservado] = useState<string | null>(null);
@@ -23,14 +27,14 @@ export function Agenda() {
   );
 
   return (
-    <section id="agenda" className="relative overflow-hidden bg-amarillo py-24 sm:py-32" aria-labelledby="agenda-title">
+    <section id="agenda" className={`relative overflow-hidden bg-amarillo ${page ? "pb-24 pt-32 sm:pb-32 sm:pt-40" : "py-24 sm:py-32"}`} aria-labelledby="agenda-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <Eyebrow className="bg-blanco">Agenda de la comunidad</Eyebrow>
-            <h2 id="agenda-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
+            <Title id="agenda-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
               Lo que se está tomando esta semana.
-            </h2>
+            </Title>
             <p className="mt-5 max-w-md text-lg text-cafe/80">
               Catas, talleres, meriendas y alguna coffee rave. Todo en un lugar, con un nivel claro para
               que sepas si es para vos. Spoiler: casi siempre es para vos.
@@ -158,6 +162,39 @@ export function Agenda() {
             </ul>
           </div>
         </div>
+
+        {page ? (
+          <div className="mt-16 grid gap-4 md:grid-cols-2">
+            {[
+              {
+                t: "Publicá tu cata o taller",
+                d: "Si sabés hacer algo, compartilo. Armá tu evento, definí cupos y precio, y vendé tus entradas de forma independiente.",
+                cta: "Quiero publicar",
+                bg: "bg-cafe text-blanco",
+                btn: "bg-naranja text-cafe",
+              },
+              {
+                t: "Ofrecé tu espacio",
+                d: "¿Tu salón queda libre a la tarde? Abrilo a catas, talleres o coworking cafetero. Ingresos para tu cafetería, encuentros para la comunidad.",
+                cta: "Ofrecer mi espacio",
+                bg: "bg-blanco",
+                btn: "bg-cafe text-blanco",
+              },
+            ].map((b) => (
+              <div key={b.t} className={`flex flex-col gap-4 rounded-[2rem] p-7 sm:p-9 ${b.bg}`}>
+                <p className="font-display text-2xl font-semibold sm:text-3xl">{b.t}</p>
+                <p className="opacity-80">{b.d}</p>
+                <Link href={RUTAS.sumate} className={`mt-auto w-fit rounded-full px-5 py-3 font-display text-sm font-semibold ${b.btn}`}>
+                  {b.cta}
+                </Link>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-12 flex justify-center">
+            <VerMas href={RUTAS.agenda}>Ver toda la agenda</VerMas>
+          </div>
+        )}
       </div>
     </section>
   );

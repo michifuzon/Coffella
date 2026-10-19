@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/components/layout/Providers";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
+import { SITE_URL } from "@/lib/site";
 
 // Tipografías oficiales del kit de marca: Sora (identidad) + Figtree (lectura)
 const sora = localFont({
@@ -25,9 +28,6 @@ const figtree = localFont({
     { path: "../fonts/Figtree-Bold.ttf", weight: "700" },
   ],
 });
-
-// URL pública (GitHub Pages). Las previsualizaciones al compartir necesitan URLs absolutas.
-const SITE_URL = `https://michifuzon.github.io${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -63,7 +63,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es-AR" className={`${sora.variable} ${figtree.variable} antialiased`}>
       <body className="min-h-dvh">
-        <Providers>{children}</Providers>
+        <Providers>
+          <a
+            href="#contenido"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-cafe focus:px-4 focus:py-2 focus:text-blanco"
+          >
+            Saltar al contenido
+          </a>
+          <Nav />
+          <main id="contenido">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

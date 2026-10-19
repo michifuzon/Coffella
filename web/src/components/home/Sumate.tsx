@@ -8,7 +8,8 @@ import { Prototipo } from "@/components/ui/Prototipo";
 
 const LADOS = ["Tomo café", "Hago café", "Tengo un lugar", "Un poco de todo"];
 
-export function Sumate() {
+export function Sumate({ page = false }: { page?: boolean }) {
+  const Title = page ? "h1" : "h2";
   const [lado, setLado] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -25,12 +26,12 @@ export function Sumate() {
   };
 
   return (
-    <section id="sumate" className="grain relative overflow-hidden bg-naranja py-24 sm:py-32" aria-labelledby="sumate-title">
+    <section id="sumate" className={`grain relative overflow-hidden bg-naranja ${page ? "pb-24 pt-32 sm:pb-32 sm:pt-40" : "py-24 sm:py-32"}`} aria-labelledby="sumate-title">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_1fr]">
         <div className="relative">
-          <h2 id="sumate-title" className="font-display text-[clamp(2.8rem,7vw,6.5rem)] font-semibold leading-[0.95] tracking-tight">
+          <Title id="sumate-title" className="font-display text-[clamp(2.8rem,7vw,6.5rem)] font-semibold leading-[0.95] tracking-tight">
             Tu lugar en la mesa ya está.
-          </h2>
+          </Title>
           <p className="mt-6 max-w-lg text-lg sm:text-xl">
             Seas quien prepara el café, quien lo sirve o quien lo toma: acá hay gente esperando para
             recomendarte algo, enseñarte algo o simplemente compartir uno.

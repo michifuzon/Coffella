@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import { RUTAS } from "@/lib/site";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { PERSONAS, type Persona } from "@/data/comunidad";
 import { MiradaIsotipo } from "@/components/brand/MiradaIsotipo";
 import { Prototipo } from "@/components/ui/Prototipo";
+import { VerMas } from "@/components/ui/VerMas";
 
 const TONO: Record<Persona["tono"], { card: string; chip: string; cup: string; eye: string }> = {
   naranja: { card: "bg-naranja text-cafe", chip: "bg-blanco/40", cup: "var(--cafe)", eye: "var(--naranja)" },
@@ -13,16 +16,17 @@ const TONO: Record<Persona["tono"], { card: string; chip: string; cup: string; e
   crema: { card: "bg-crema text-cafe", chip: "bg-blanco", cup: "var(--cafe)", eye: "var(--crema)" },
 };
 
-export function Personas() {
+export function Personas({ page = false }: { page?: boolean }) {
+  const Title = page ? "h1" : "h2";
   return (
-    <section id="personas" className="relative overflow-hidden bg-cafe py-24 text-blanco sm:py-32" aria-labelledby="personas-title">
+    <section id="personas" className={`relative overflow-hidden bg-cafe text-blanco ${page ? "pb-24 pt-32 sm:pb-32 sm:pt-40" : "py-24 sm:py-32"}`} aria-labelledby="personas-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <span className="inline-block rounded-full bg-naranja px-3.5 py-1 font-display text-sm text-cafe">Las personas detrás del café</span>
-            <h2 id="personas-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
+            <Title id="personas-title" className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
               Si te hizo volver, merece que recuerdes su nombre.
-            </h2>
+            </Title>
           </div>
           <div className="flex flex-col items-start gap-3 md:items-end">
             <p className="max-w-sm text-blanco/70 md:text-right">
@@ -34,19 +38,25 @@ export function Personas() {
         </div>
       </div>
 
-      <ul className="mt-12 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-6 [scrollbar-width:thin] after:block after:w-px after:shrink-0 sm:scroll-px-6 sm:px-6 xl:scroll-px-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] xl:px-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
+      <ul
+        className={
+          page
+            ? "mx-auto mt-12 grid max-w-7xl gap-4 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 xl:grid-cols-4"
+            : "mt-12 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-6 [scrollbar-width:thin] after:block after:w-px after:shrink-0 sm:scroll-px-6 sm:px-6 xl:scroll-px-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] xl:px-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]"
+        }
+      >
         {PERSONAS.map((p) => (
           <li key={p.id} className="snap-start">
-            <PerfilCard persona={p} />
+            <PerfilCard persona={p} fluid={page} />
           </li>
         ))}
         <li className="snap-start">
-          <div className="flex h-full w-[min(84vw,360px)] flex-col justify-between rounded-[2rem] border-2 border-dashed border-blanco/25 p-7">
+          <div className={`flex h-full flex-col gap-4 ${page ? "w-full" : "w-[min(84vw,360px)]"} justify-between rounded-[2rem] border-2 border-dashed border-blanco/25 p-7`}>
             <p className="font-display text-2xl font-semibold leading-tight">¿Trabajás detrás de una barra?</p>
             <p className="text-blanco/70">Tu oficio también merece un lugar. Armá tu perfil con tu recorrido, tus capacitaciones y tus referencias.</p>
-            <a href="#sumate" className="w-fit rounded-full bg-naranja px-5 py-3 font-display text-sm font-semibold text-cafe">
+            <Link href={RUTAS.sumate} className="w-fit rounded-full bg-naranja px-5 py-3 font-display text-sm font-semibold text-cafe">
               Crear mi perfil
-            </a>
+            </Link>
           </div>
         </li>
       </ul>
@@ -63,23 +73,33 @@ export function Personas() {
           </div>
         ))}
       </div>
+
+      {!page && (
+        <div className="mt-12 flex justify-center px-4">
+          <VerMas href={RUTAS.personas} tono="claro">Conocé a más personas</VerMas>
+        </div>
+      )}
     </section>
   );
 }
 
-function PerfilCard({ persona: p }: { persona: Persona }) {
+function PerfilCard({ persona: p, fluid = false }: { persona: Persona; fluid?: boolean }) {
   const [modo, setModo] = useState<"perfil" | "cafecito" | "gracias">("perfil");
   const [monto, setMonto] = useState(2000);
   const t = TONO[p.tono];
 
   return (
-    <article className={`relative flex h-full w-[min(84vw,360px)] flex-col overflow-hidden rounded-[2rem] p-7 ${t.card}`}>
+    <article className={`relative flex h-full flex-col overflow-hidden rounded-[2rem] p-7 ${fluid ? "w-full" : "w-[min(84vw,360px)]"} ${t.card}`}>
       <div className="flex items-center gap-4">
         <div className="relative grid size-16 shrink-0 place-items-center rounded-full bg-cafe/10">
           <MiradaIsotipo className="w-12" cupColor={t.cup} eyeColor={t.eye} title="" />
         </div>
         <div>
-          <h3 className="font-display text-xl font-semibold">{p.nombre}</h3>
+          <h3 className="font-display text-xl font-semibold">
+            <Link href={RUTAS.persona(p.id)} className="underline-offset-4 hover:underline">
+              {p.nombre}
+            </Link>
+          </h3>
           <p className="text-sm opacity-75">{p.rol}</p>
           <p className="mt-1 inline-flex items-center gap-1 text-xs font-semibold">
             <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
@@ -125,6 +145,9 @@ function PerfilCard({ persona: p }: { persona: Persona }) {
                 Contale
               </button>
             </div>
+            <Link href={RUTAS.persona(p.id)} className="mt-3 text-center text-sm font-semibold underline underline-offset-4">
+              Ver perfil completo
+            </Link>
           </motion.div>
         )}
 

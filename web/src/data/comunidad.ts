@@ -277,6 +277,10 @@ export const EVENTOS: Evento[] = [
 export type Persona = {
   id: string;
   nombre: string;
+  /** cómo la llama la comunidad; vincula eventos y momentos */
+  apodo: string;
+  /** cafetería donde trabaja, solo si eligió mostrarla */
+  cafeteria?: string;
   rol: string;
   barrio: string;
   anios: number;
@@ -290,6 +294,8 @@ export type Persona = {
 export const PERSONAS: Persona[] = [
   {
     id: "sofi",
+    apodo: "Sofi",
+    cafeteria: "ambar",
     nombre: "Sofía R.",
     rol: "Barista de especialidad",
     barrio: "Güemes",
@@ -302,6 +308,8 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: "tomas",
+    apodo: "Tomás",
+    cafeteria: "ritual",
     nombre: "Tomás E.",
     rol: "Tostador",
     barrio: "Alberdi",
@@ -314,6 +322,8 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: "juli",
+    apodo: "Juli",
+    cafeteria: "nomada",
     nombre: "Julieta M.",
     rol: "Head barista · Formadora",
     barrio: "Nueva Córdoba",
@@ -326,6 +336,8 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: "mati",
+    apodo: "Mati",
+    cafeteria: "centro",
     nombre: "Matías G.",
     rol: "Barista · Bar lead",
     barrio: "Centro",
@@ -345,4 +357,36 @@ export const FRASES = [
   "Hay mucho pasando antes del primer sorbo.",
   "El café se termina. El reconocimiento puede quedarse.",
   "¿Estuvo bueno? Que lo sepa quien lo hizo.",
+];
+
+export type TipoMomento = "recomendacion" | "gracias" | "oportunidad" | "aprendizaje";
+
+export const TIPOS_MOMENTO: { id: TipoMomento; label: string }[] = [
+  { id: "recomendacion", label: "Recomendaciones" },
+  { id: "gracias", label: "Agradecimientos" },
+  { id: "oportunidad", label: "Oportunidades" },
+  { id: "aprendizaje", label: "Aprendizajes" },
+];
+
+export type Momento = {
+  id: string;
+  tipo: TipoMomento;
+  de: string;
+  rolDe: string;
+  para?: string;
+  texto: string;
+  lugar?: string;
+  hace: string;
+};
+
+export const MOMENTOS: Momento[] = [
+  { id: "m1", tipo: "gracias", de: "Lu", rolDe: "Fan del café", para: "Sofi", texto: "Me recomendaste el Huila y ahora no tomo otra cosa. Gracias por la paciencia con mis preguntas.", lugar: "Café Ámbar", hace: "hace 2 h" },
+  { id: "m2", tipo: "oportunidad", de: "Nómada", rolDe: "Cafetería", texto: "Buscamos barista para el turno mañana. Valoramos ganas de aprender más que años de experiencia.", lugar: "Nueva Córdoba", hace: "hace 5 h" },
+  { id: "m3", tipo: "aprendizaje", de: "Tomás", rolDe: "Tostador", texto: "¿Por qué este café sabe a frutas si no tiene frutas? Spoiler: el origen y el tueste. Lo charlamos el jueves.", hace: "ayer" },
+  { id: "m4", tipo: "recomendacion", de: "Caro", rolDe: "Barista", texto: "Si te gustan los cafés más suaves, empezá por un filtrado. Si te gusta lo intenso, espresso. Y si no sabés, preguntá.", hace: "ayer" },
+  { id: "m5", tipo: "gracias", de: "Nico", rolDe: "Recién llegado", para: "Juli", texto: "Fui a mi primer taller sin saber nada y salí con un corazón de latte (bastante torcido, pero corazón).", lugar: "Nómada", hace: "hace 2 días" },
+  { id: "m6", tipo: "oportunidad", de: "Juli", rolDe: "Formadora", texto: "Abro dos lugares para mentoría de baristas que recién empiezan. Escribime por acá.", hace: "hace 2 días" },
+  { id: "m7", tipo: "recomendacion", de: "Mica", rolDe: "Fan del café", texto: "Para trabajar con laptop: Molienda Centro. Enchufes en la barra y nadie te apura.", lugar: "Centro", hace: "hace 3 días" },
+  { id: "m8", tipo: "aprendizaje", de: "Mati", rolDe: "Bar lead", texto: "Calibré el molino tres veces hoy. La humedad cambia todo. Nadie lo ve, pero se nota en la taza.", hace: "hace 3 días" },
+  { id: "m9", tipo: "gracias", de: "Café Ámbar", rolDe: "Cafetería", para: "Tomás", texto: "Gracias por el lote de Etiopía. La gente pregunta por él todos los días.", hace: "hace 4 días" },
 ];

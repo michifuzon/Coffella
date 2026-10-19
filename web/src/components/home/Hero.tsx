@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { RUTAS } from "@/lib/site";
 import { useRef } from "react";
 import { motion } from "motion/react";
 import { MiradaIsotipo } from "@/components/brand/MiradaIsotipo";
@@ -60,9 +62,9 @@ export function Hero() {
             <a href="#lado" className="rounded-full bg-cafe px-6 py-3.5 font-display font-semibold text-blanco transition-transform hover:-translate-y-0.5">
               Encontrá tu lugar
             </a>
-            <a href="#mapa" className="rounded-full border-2 border-cafe px-6 py-3 font-display font-semibold transition-colors hover:bg-amarillo">
+            <Link href={RUTAS.cafeterias} className="rounded-full border-2 border-cafe px-6 py-3 font-display font-semibold transition-colors hover:bg-amarillo">
               Explorar cafeterías
-            </a>
+            </Link>
           </motion.div>
         </div>
 

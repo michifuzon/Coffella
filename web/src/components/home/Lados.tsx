@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { RUTAS } from "@/lib/site";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { MiradaIsotipo } from "@/components/brand/MiradaIsotipo";
@@ -134,9 +136,9 @@ export function Lados() {
                 <p className="font-display text-2xl font-semibold leading-tight">
                   Ser compañeros del café es compartir un mismo interés, aunque cada uno lo viva distinto.
                 </p>
-                <a href="#sumate" className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-cafe px-5 py-3 font-display text-sm font-semibold text-blanco">
+                <Link href={RUTAS.sumate} className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-cafe px-5 py-3 font-display text-sm font-semibold text-blanco">
                   {lado.cta}
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>

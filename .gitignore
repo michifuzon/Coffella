@@ -1,0 +1,8 @@
+# Kit de marca original (archivos fuente pesados: .ai, PDFs). Vive en Drive.
+brand-kit/
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.DS_Store
+.env*

@@ -26,7 +26,11 @@ const figtree = localFont({
   ],
 });
 
+// URL pública (GitHub Pages). Las previsualizaciones al compartir necesitan URLs absolutas.
+const SITE_URL = `https://michifuzon.github.io${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}`;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Coffella — Comunidad cafetera",
     template: "%s · Coffella",
@@ -39,6 +43,15 @@ export const metadata: Metadata = {
       "Descubrí cafeterías, conocé a quien hizo tu café y encontrá tu lugar en la comunidad cafetera.",
     locale: "es_AR",
     type: "website",
+    siteName: "Coffella",
+    url: `${SITE_URL}/`,
+    images: [{ url: `${SITE_URL}/og.png`, width: 1200, height: 630, alt: "Coffella — comunidad cafetera" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Coffella — Comunidad cafetera",
+    description: "Descubrí cafeterías, conocé a quien hizo tu café y encontrá tu lugar en la comunidad cafetera.",
+    images: [`${SITE_URL}/og.png`],
   },
 };
 

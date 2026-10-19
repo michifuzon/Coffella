@@ -1,4 +1,4 @@
-:HL["/Coffella/_next/static/chunks/1ndd_v6olp-zw.css","style"]
+:HL["/Coffella/_next/static/chunks/32vmn8_y69sor.css","style"]
 :HL["/Coffella/_next/static/media/Figtree_Bold-s.p.0yxkq67it_4on.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/Coffella/_next/static/media/Figtree_Medium-s.p.22_t1cxt5d66y.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
 :HL["/Coffella/_next/static/media/Figtree_Regular-s.p.1rrcdarr55e54.ttf","font",{"crossOrigin":"","type":"font/ttf"}]
@@ -11,4 +11,4 @@
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":{"n":"id","t":"d","k":"sofi","s":[]},"h":65632,"c":"$Q3"}]]
 1:[["children",{"s":"personas","h":131168,"c":"$Q2"}]]
-0:{"b":"HiQItDrOWw2LgktTRs9DT","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+0:{"b":"BijVpf81ZGqE59Lg0XDj6","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}

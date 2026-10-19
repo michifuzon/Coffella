@@ -1,5 +1,5 @@
-:HL["/Coffella/_next/static/chunks/1ndd_v6olp-zw.css","style"]
+:HL["/Coffella/_next/static/chunks/32vmn8_y69sor.css","style"]
 :HL["/Coffella/brand/wordmark-bajada.svg","image"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
-0:{"b":"HiQItDrOWw2LgktTRs9DT","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"BijVpf81ZGqE59Lg0XDj6","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
